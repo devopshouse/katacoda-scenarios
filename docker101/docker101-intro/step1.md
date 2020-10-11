@@ -4,8 +4,7 @@ keywords: requirements, apt, installation, ubuntu, install, uninstall, upgrade, 
 ---
 
 To get started with Docker Engine on Ubuntu, make sure you
-[meet the prerequisites](#prerequisites), then
-[install Docker](#installation-methods).
+meet the prerequisites, then install Docker.
 
 ## Prerequisites
 

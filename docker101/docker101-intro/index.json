@@ -6,11 +6,11 @@
   "details": {
     "steps": [
       {
-        "title": "Instalaçã do Docker no Ubuntu",
+        "title": "Instalação do Docker no Ubuntu",
         "text": "step1.md"
       },
       {
-        "title": "Step 2",
+        "title": "Configurações Pós-Instalação",
         "text": "step2.md"
       },
       {
