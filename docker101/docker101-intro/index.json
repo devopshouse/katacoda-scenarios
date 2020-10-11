@@ -6,7 +6,7 @@
   "details": {
     "steps": [
       {
-        "title": "Step 1",
+        "title": "Instalaçã do Docker no Ubuntu",
         "text": "step1.md"
       },
       {
