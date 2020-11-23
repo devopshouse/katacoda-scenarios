@@ -22,7 +22,11 @@ O Docker Engine é compatível com as arquiteturas `x86_64` (ou `amd64`), `armhf
 Versões mais antigas do Docker eram chamadas de `docker`,` docker.io` ou `docker-engine`. Se estiverem instalados, desinstale-os:
 
 ```bash
-$ sudo apt-get remove docker docker-engine docker.io containerd runc
+$ sudo apt-get update -y
+```
+
+```bash
+$ sudo apt-get remove docker docker-engine docker.io containerd runc -y
 ```
 
 Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
