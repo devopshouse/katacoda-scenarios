@@ -22,11 +22,11 @@ O Docker Engine é compatível com as arquiteturas `x86_64` (ou `amd64`), `armhf
 Versões mais antigas do Docker eram chamadas de `docker`,` docker.io` ou `docker-engine`. Se estiverem instalados, desinstale-os:
 
 ```bash
-$ sudo apt-get update -y
+sudo apt-get update -y
 ```{{execute}}
 
 ```bash
-$ sudo apt-get remove docker docker-engine docker.io containerd runc -y
+sudo apt-get remove docker docker-engine docker.io containerd runc -y
 ```{{execute}}
 
 Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
@@ -57,9 +57,9 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 1.  Atualize o índice do pacote `apt` e instale os pacotes para permitir que o `apt` use um repositório sobre HTTPS:
 
     ```bash
-    $ sudo apt-get update
+    sudo apt-get update
 
-    $ sudo apt-get install \
+    sudo apt-get install \
         apt-transport-https \
         ca-certificates \
         curl \
@@ -70,13 +70,13 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 2.  Adicione a chave GPG oficial do Docker:
 
     ```bash
-    $ curl -fsSL $URL_BASE/gpg | sudo apt-key add -
+    curl -fsSL $URL_BASE/gpg | sudo apt-key add -
     ```{{execute}}
 
     Verifique se agora você tem a chave com a impressão digital: <span><code>9DC8 5822 9FC7 DD38 854A&nbsp;&nbsp;E2D8 8D81 803C 0EBF CD88</code></span>, procurando pelo últimos 8 caracteres da impressão digital.
 
     ```bash
-    $ sudo apt-key fingerprint 0EBFCD88
+    sudo apt-key fingerprint 0EBFCD88
 
     pub   rsa4096 2017-02-22 [SCEA]
           9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
@@ -88,13 +88,13 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 
     > **Nota**: O comando `lsb_release -cs` abaixo retorna o nome da sua
     > Distribuição Ubuntu, como `xenial`. Às vezes, em uma distribuição
-    > como o Linux Mint, você pode precisar alterar `$ (lsb_release -cs)`
+    > como o Linux Mint, você pode precisar alterar `(lsb_release -cs)`
     > para sua distribuição pai do Ubuntu. Por exemplo, se você estiver usando
     > `Linux Mint Tessa`, você pode usar `bionic`. O Docker não oferece nenhuma garantia em
     > distribuições não testados e sem suporte.
 
     ```bash
-    $ sudo add-apt-repository \
+    sudo add-apt-repository \
        "deb [arch=amd64] $URL_BASE \
        $(lsb_release -cs) \
        stable"
@@ -105,8 +105,8 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 1. Atualize o índice do pacote `apt` e instale a _última versão_ do Docker Engine e containerd ou vá para a próxima etapa para instalar uma versão específica:
 
     ```bash
-    $ sudo apt-get update
-    $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
     ```{{execute}}
 
     > Tem vários repositórios Docker?
@@ -121,7 +121,7 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
     a. Liste as versões disponíveis em seu repo:
 
     ```bash
-    $ apt-cache madison docker-ce
+    apt-cache madison docker-ce
 
       docker-ce | 5:18.09.1~3-0~ubuntu-xenial | {{ download-url-base }}  xenial/stable amd64 Packages
       docker-ce | 5:18.09.0~3-0~ubuntu-xenial | {{ download-url-base }}  xenial/stable amd64 Packages
@@ -133,13 +133,13 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
     b. Instale uma versão específica usando a string de versão da segunda coluna, por exemplo, `5: 18.09.1 ~ 3-0 ~ ubuntu-xenial`.
 
     ```bash
-    $ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
+    sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
     ```{{execute}}
 
 3.  Verifique se o Docker Engine está instalado corretamente executando a imagem `hello-world`.
 
     ```bash
-    $ sudo docker run hello-world
+    sudo docker run hello-world
     ```{{execute}}
 
     Este comando baixa uma imagem de teste e a executa em um contêiner. Quando o o contêiner é executado, ele imprime uma mensagem informativa e sai.
@@ -159,13 +159,13 @@ Para atualizar o Docker Engine, primeiro execute `sudo apt-get update` e siga o
 1.  Desinstale os pacotes Docker Engine, CLI e Containerd:
 
     ```bash
-    $ sudo apt-get purge docker-ce docker-ce-cli containerd.io
+    sudo apt-get purge docker-ce docker-ce-cli containerd.io
     ```{{execute}}
 
 2.  Imagens, contêineres, volumes ou arquivos de configuração personalizados em seu host não são removidos automaticamente. Para excluir todas as imagens, contêineres e volumes:
 
     ```bash
-    $ sudo rm -rf /var/lib/docker
+    sudo rm -rf /var/lib/docker
     ```{{execute}}
 
 Você deve excluir quaisquer arquivos de configuração editados manualmente.
