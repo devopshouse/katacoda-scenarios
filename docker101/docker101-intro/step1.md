@@ -31,7 +31,7 @@ $ sudo apt-get remove docker docker-engine docker.io containerd runc -y
 
 Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
 
-O conteúdo de `/var/lib/docker/`, incluindo imagens, contêineres, volumes e redes, são preservados. Se você não precisa salvar seus dados existentes e deseja comece com uma instalação limpa, consulte [Desinstalar Docker Engine] (#desinstalard-docker-engine) seção na parte inferior desta página.
+O conteúdo de `/var/lib/docker/`, incluindo imagens, contêineres, volumes e redes, são preservados. Se você não precisa salvar seus dados existentes e deseja comece com uma instalação limpa, consulte [Desinstalar Docker Engine] (#desinstalar-docker-engine) seção na parte inferior desta página.
 
 ### Drivers de armazenamento suportados
 
@@ -52,11 +52,11 @@ Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, v
 
 #### Configure o repositório
 
-{% assign download-url-base = "https://download.docker.com/linux/ubuntu" %}
+URL_BASE="https://download.docker.com/linux/ubuntu"
 
 1.  Atualize o índice do pacote `apt` e instale os pacotes para permitir que o `apt` use um repositório sobre HTTPS:
 
-    ```bash
+    `
     $ sudo apt-get update
 
     $ sudo apt-get install \
@@ -65,7 +65,7 @@ Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, v
         curl \
         gnupg-agent \
         software-properties-common
-    ```
+    `{{copy}}
 
 2.  Adicione a chave GPG oficial do Docker:
 
