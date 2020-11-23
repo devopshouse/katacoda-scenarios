@@ -21,10 +21,10 @@ O Docker Engine é compatível com as arquiteturas `x86_64` (ou `amd64`), `armhf
 
 Versões mais antigas do Docker eram chamadas de `docker`,` docker.io` ou `docker-engine`. Se estiverem instalados, desinstale-os:
 
-`$ sudo apt-get update -y`{{copy}}
+`$ sudo apt-get update -y`{{execute}}
 
 
-`$ sudo apt-get remove docker docker-engine docker.io containerd runc -y`{{copy}}
+`$ sudo apt-get remove docker docker-engine docker.io containerd runc -y`{{execute}}
 
 Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
 
@@ -53,7 +53,7 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 
 1.  Atualize o índice do pacote `apt` e instale os pacotes para permitir que o `apt` use um repositório sobre HTTPS:
 
-    `
+    ```bash
     $ sudo apt-get update
 
     $ sudo apt-get install \
@@ -62,7 +62,7 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
         curl \
         gnupg-agent \
         software-properties-common
-    `{{copy}}
+    ```{{execute}}
 
 2.  Adicione a chave GPG oficial do Docker:
 
