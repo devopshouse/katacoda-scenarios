@@ -21,10 +21,13 @@ O Docker Engine é compatível com as arquiteturas `x86_64` (ou `amd64`), `armhf
 
 Versões mais antigas do Docker eram chamadas de `docker`,` docker.io` ou `docker-engine`. Se estiverem instalados, desinstale-os:
 
-`$ sudo apt-get update -y`{{execute}}
+```bash
+$ sudo apt-get update -y
+```{{execute}}
 
-
-`$ sudo apt-get remove docker docker-engine docker.io containerd runc -y`{{execute}}
+```bash
+$ sudo apt-get remove docker docker-engine docker.io containerd runc -y
+```{{execute}}
 
 Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
 
@@ -67,8 +70,8 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 2.  Adicione a chave GPG oficial do Docker:
 
     ```bash
-    $ curl -fsSL {{ download-url-base }}/gpg | sudo apt-key add -
-    ```
+    $ curl -fsSL $URL_BASE/gpg | sudo apt-key add -
+    ```{{execute}}
 
     Verifique se agora você tem a chave com a impressão digital: <span><code>9DC8 5822 9FC7 DD38 854A&nbsp;&nbsp;E2D8 8D81 803C 0EBF CD88</code></span>, procurando pelo últimos 8 caracteres da impressão digital.
 
@@ -90,43 +93,12 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
     > `Linux Mint Tessa`, você pode usar `bionic`. O Docker não oferece nenhuma garantia em
     > distribuições não testados e sem suporte.
 
-    <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" data-target="#x86_64_repo">x86_64 / amd64</a></li>
-      <li><a data-toggle="tab" data-target="#armhf_repo">armhf</a></li>
-      <li><a data-toggle="tab" data-target="#arm64_repo">arm64</a></li>
-    </ul>
-    <div class="tab-content">
-    <div id="x86_64_repo" class="tab-pane fade in active" markdown="1">
-
     ```bash
     $ sudo add-apt-repository \
-       "deb [arch=amd64] {{ download-url-base }} \
+       "deb [arch=amd64] $URL_BASE \
        $(lsb_release -cs) \
        stable"
-    ```
-
-    </div>
-    <div id="armhf_repo" class="tab-pane fade" markdown="1">
-
-    ```bash
-    $ sudo add-apt-repository \
-       "deb [arch=armhf] {{ download-url-base }} \
-       $(lsb_release -cs) \
-       stable"
-    ```
-
-    </div>
-    <div id="arm64_repo" class="tab-pane fade" markdown="1">
-
-    ```bash
-    $ sudo add-apt-repository \
-       "deb [arch=arm64] {{ download-url-base }} \
-       $(lsb_release -cs) \
-       stable"
-    ```
-
-    </div>
-    </div> <!-- tab-content -->
+    ```{{execute}}
 
 #### Instale o Docker Engine
 
@@ -135,7 +107,7 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
     ```bash
     $ sudo apt-get update
     $ sudo apt-get install docker-ce docker-ce-cli containerd.io
-    ```
+    ```{{execute}}
 
     > Tem vários repositórios Docker?
     >
@@ -162,13 +134,13 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 
     ```bash
     $ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
-    ```
+    ```{{execute}}
 
 3.  Verifique se o Docker Engine está instalado corretamente executando a imagem `hello-world`.
 
     ```bash
     $ sudo docker run hello-world
-    ```
+    ```{{execute}}
 
     Este comando baixa uma imagem de teste e a executa em um contêiner. Quando o o contêiner é executado, ele imprime uma mensagem informativa e sai.
 
@@ -188,13 +160,13 @@ Para atualizar o Docker Engine, primeiro execute `sudo apt-get update` e siga o
 
     ```bash
     $ sudo apt-get purge docker-ce docker-ce-cli containerd.io
-    ```
+    ```{{execute}}
 
 2.  Imagens, contêineres, volumes ou arquivos de configuração personalizados em seu host não são removidos automaticamente. Para excluir todas as imagens, contêineres e volumes:
 
     ```bash
     $ sudo rm -rf /var/lib/docker
-    ```
+    ```{{execute}}
 
 Você deve excluir quaisquer arquivos de configuração editados manualmente.
 
