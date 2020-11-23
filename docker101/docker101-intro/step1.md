@@ -52,11 +52,10 @@ Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, v
 
 #### Configure o repositório
 
-URL_BASE="https://download.docker.com/linux/ubuntu"
-
 1.  Atualize o índice do pacote `apt` e instale os pacotes para permitir que o `apt` use um repositório sobre HTTPS:
 
     ```bash
+    URL_BASE="https://download.docker.com/linux/ubuntu"
     sudo apt-get update
 
     sudo apt-get install \
