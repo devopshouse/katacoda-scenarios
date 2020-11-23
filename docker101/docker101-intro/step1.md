@@ -31,7 +31,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc -y
 
 Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
 
-O conteúdo de `/var/lib/docker/`, incluindo imagens, contêineres, volumes e redes, são preservados. Se você não precisa salvar seus dados existentes e deseja comece com uma instalação limpa, consulte [Desinstalar Docker Engine] (#desinstalar-docker-engine) seção na parte inferior desta página.
+O conteúdo de `/var/lib/docker/`, incluindo imagens, contêineres, volumes e redes, são preservados. Se você não precisa salvar seus dados existentes e deseja comece com uma instalação limpa, consulte **Desinstalar Docker Engine** seção na parte inferior desta página.
 
 ### Drivers de armazenamento suportados
 
@@ -44,7 +44,7 @@ O Docker Engine usa o driver de armazenamento `overlay2` por padrão. Se você p
 Você pode instalar o Docker Engine de diferentes maneiras, dependendo de suas necessidades:
 
 - Maioria dos usuários
-  [configurar e instalar os repositórios do Docker](#instale-usando-repositório) para facilitar as tarefas de e atualização. Isto é o abordagem recomendada.
+  Configurar e instalar os repositórios do Docker para facilitar as tarefas de e atualização. Isto é o abordagem recomendada.
 
 ### Instale usando repositório
 
@@ -146,13 +146,12 @@ URL_BASE="https://download.docker.com/linux/ubuntu"
 
 O Docker Engine está instalado e em execução. O grupo `docker` é criado, mas nenhum usuário
 é adicionado a ele. Você precisa usar `sudo` para executar comandos do Docker.
-Continue para [Etapas de pós-instalação para Linux] (#etapas-de-pós-instalação-para-linux) para permitir que usuários não privilegiados
+Continue para **Etapas de pós-instalação para Linux** para permitir que usuários não privilegiados
 sejam capaz de executar comandos do Docker e para outras etapas de configuração opcionais.
 
 #### Atualizar Docker Engine
 
-Para atualizar o Docker Engine, primeiro execute `sudo apt-get update` e siga o
-[Instruções de Instalação] (#métodos-de-instalação), escolhendo o novo versão que você deseja instalar.
+Para atualizar o Docker Engine, primeiro execute `sudo apt-get update` e siga **Instruções de Instalação**, escolhendo o novo versão que você deseja instalar.
 
 ## Desinstalar Docker Engine
 
