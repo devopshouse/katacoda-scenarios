@@ -1,69 +1,56 @@
 ---
-description: Instructions for installing Docker Engine on Ubuntu
+description: Instruções para instalação do Docker em Ambiente Linux
 keywords: requirements, apt, installation, ubuntu, install, uninstall, upgrade, update
 ---
 
-To get started with Docker Engine on Ubuntu, make sure you
-meet the prerequisites, then install Docker.
+Para começar a usar o Docker Engine no Ubuntu, certifique-se de atender aos pré-requisitos e instale o Docker.
 
 ## Prerequisites
 
-### OS requirements
+### Requisitos de sistema operacional
 
-To install Docker Engine, you need the 64-bit version of one of these Ubuntu
-versions:
+Para instalar o Docker Engine, você precisa da versão de 64 bits de uma dessas versões:
 
 - Ubuntu Focal 20.04 (LTS)
 - Ubuntu Bionic 18.04 (LTS)
 - Ubuntu Xenial 16.04 (LTS)
 
-Docker Engine is supported on `x86_64` (or `amd64`), `armhf`, and `arm64` architectures.
+O Docker Engine é compatível com as arquiteturas `x86_64` (ou `amd64`), `armhf` e `arm64`.
 
-### Uninstall old versions
+### Desinstalar versões antigas
 
-Older versions of Docker were called `docker`, `docker.io`, or `docker-engine`.
-If these are installed, uninstall them:
+Versões mais antigas do Docker eram chamadas de `docker`,` docker.io` ou `docker-engine`. Se estiverem instalados, desinstale-os:
 
 ```bash
 $ sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
 
-It's OK if `apt-get` reports that none of these packages are installed.
+Tudo bem se o `apt-get` relatar que nenhum desses pacotes está instalado.
 
-The contents of `/var/lib/docker/`, including images, containers, volumes, and
-networks, are preserved. If you do not need to save your existing data, and want to
-start with a clean installation, refer to the [uninstall Docker Engine](#uninstall-docker-engine)
-section at the bottom of this page.
+O conteúdo de `/var/lib/docker/`, incluindo imagens, contêineres, volumes e redes, são preservados. Se você não precisa salvar seus dados existentes e deseja comece com uma instalação limpa, consulte [Desinstalar Docker Engine] (#desinstalard-docker-engine) seção na parte inferior desta página.
 
-### Supported storage drivers
+### Drivers de armazenamento suportados
 
-Docker Engine on Ubuntu supports `overlay2`, `aufs` and `btrfs` storage drivers.
+O Docker Engine no Ubuntu suporta drivers de armazenamento `overlay2`, `aufs` e `btrfs`.
 
-Docker Engine uses the `overlay2` storage driver by default. If you need to use
-`aufs` instead, you need to configure it manually.
-See [use the AUFS storage driver](../../storage/storagedriver/aufs-driver.md)
+O Docker Engine usa o driver de armazenamento `overlay2` por padrão. Se você precisar usar `aufs` em vez disso, precisará configurá-lo manualmente. Consulte a [Documentação do Docker](https://docs.docker.com/storage/storagedriver/aufs-driver/).
 
-## Installation methods
+## Métodos de instalação
 
-You can install Docker Engine in different ways, depending on your needs:
+Você pode instalar o Docker Engine de diferentes maneiras, dependendo de suas necessidades:
 
-- Most users
-  [set up Docker's repositories](#install-using-the-repository) and install
-  from them, for ease of installation and upgrade tasks. This is the
-  recommended approach.
+- Maioria dos usuários
+  [configurar e instalar os repositórios do Docker](#instale-usando-repositório) para facilitar as tarefas de e atualização. Isto é o abordagem recomendada.
 
-### Install using the repository
+### Instale usando repositório
 
-Before you install Docker Engine for the first time on a new host machine, you need
-to set up the Docker repository. Afterward, you can install and update Docker
-from the repository.
+Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, você precisa configurar o repositório Docker. Depois disso, você pode instalar e atualizar o Docker do repositório.
 
-#### Set up the repository
+#### Configure o repositório
 
 {% assign download-url-base = "https://download.docker.com/linux/ubuntu" %}
 
-1.  Update the `apt` package index and install packages to allow `apt` to use a
-    repository over HTTPS:
+1.  Atualize o índice do pacote `apt` e instale os pacotes para permitir que o `apt` use um repositório sobre HTTPS:
 
     ```bash
     $ sudo apt-get update
@@ -76,15 +63,13 @@ from the repository.
         software-properties-common
     ```
 
-2.  Add Docker's official GPG key:
+2.  Adicione a chave GPG oficial do Docker:
 
     ```bash
     $ curl -fsSL {{ download-url-base }}/gpg | sudo apt-key add -
     ```
 
-    Verify that you now have the key with the fingerprint
-    <span><code>9DC8 5822 9FC7 DD38 854A&nbsp;&nbsp;E2D8 8D81 803C 0EBF CD88</code></span>, by searching for the
-    last 8 characters of the fingerprint.
+    Verifique se agora você tem a chave com a impressão digital: <span><code>9DC8 5822 9FC7 DD38 854A&nbsp;&nbsp;E2D8 8D81 803C 0EBF CD88</code></span>, procurando pelo últimos 8 caracteres da impressão digital.
 
     ```bash
     $ sudo apt-key fingerprint 0EBFCD88
@@ -95,16 +80,14 @@ from the repository.
     sub   rsa4096 2017-02-22 [S]
     ```
 
-3.  Use the following command to set up the **stable** repository. To add the
-    **nightly** or **test** repository, add the word `nightly` or `test` (or both)
-    after the word `stable` in the commands below. [Learn about **nightly** and **test** channels](index.md).
+3.  Use o seguinte comando para configurar o repositório ** estável **.
 
-    > **Note**: The `lsb_release -cs` sub-command below returns the name of your
-    > Ubuntu distribution, such as `xenial`. Sometimes, in a distribution
-    > like Linux Mint, you might need to change `$(lsb_release -cs)`
-    > to your parent Ubuntu distribution. For example, if you are using
-    >  `Linux Mint Tessa`, you could use `bionic`. Docker does not offer any guarantees on untested
-    > and unsupported Ubuntu distributions.
+    > **Nota**: O comando `lsb_release -cs` abaixo retorna o nome da sua
+    > Distribuição Ubuntu, como `xenial`. Às vezes, em uma distribuição
+    > como o Linux Mint, você pode precisar alterar `$ (lsb_release -cs)`
+    > para sua distribuição pai do Ubuntu. Por exemplo, se você estiver usando
+    > `Linux Mint Tessa`, você pode usar `bionic`. O Docker não oferece nenhuma garantia em
+    > distribuições não testados e sem suporte.
 
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" data-target="#x86_64_repo">x86_64 / amd64</a></li>
@@ -144,27 +127,25 @@ from the repository.
     </div>
     </div> <!-- tab-content -->
 
-#### Install Docker Engine
+#### Instale o Docker Engine
 
-1. Update the `apt` package index, and install the _latest version_ of Docker
-   Engine and containerd, or go to the next step to install a specific version:
+1. Atualize o índice do pacote `apt` e instale a _última versão_ do Docker Engine e containerd ou vá para a próxima etapa para instalar uma versão específica:
 
     ```bash
     $ sudo apt-get update
     $ sudo apt-get install docker-ce docker-ce-cli containerd.io
     ```
 
-    > Got multiple Docker repositories?
+    > Tem vários repositórios Docker?
     >
-    > If you have multiple Docker repositories enabled, installing
-    > or updating without specifying a version in the `apt-get install` or
-    > `apt-get update` command always installs the highest possible version,
-    > which may not be appropriate for your stability needs.
+    > Se você tiver vários repositórios Docker ativados, instalando
+    > ou atualizando sem especificar uma versão no `apt-get install` ou
+    > O comando `apt-get update` sempre instala a versão mais alta possível,
+    > que pode não ser apropriado para suas necessidades de estabilidade.
 
-2.  To install a _specific version_ of Docker Engine, list the available versions
-    in the repo, then select and install:
+2.  Para instalar uma _versão específica_ do Docker Engine, liste as versões disponíveis no repo, selecione e instale::
 
-    a. List the versions available in your repo:
+    a. Liste as versões disponíveis em seu repo:
 
     ```bash
     $ apt-cache madison docker-ce
@@ -176,53 +157,46 @@ from the repository.
       ...
     ```
 
-    b. Install a specific version using the version string from the second column,
-       for example, `5:18.09.1~3-0~ubuntu-xenial`.
+    b. Instale uma versão específica usando a string de versão da segunda coluna, por exemplo, `5: 18.09.1 ~ 3-0 ~ ubuntu-xenial`.
 
     ```bash
     $ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
     ```
 
-3.  Verify that Docker Engine is installed correctly by running the `hello-world`
-    image.
+3.  Verifique se o Docker Engine está instalado corretamente executando a imagem `hello-world`.
 
     ```bash
     $ sudo docker run hello-world
     ```
 
-    This command downloads a test image and runs it in a container. When the
-    container runs, it prints an informational message and exits.
+    Este comando baixa uma imagem de teste e a executa em um contêiner. Quando o o contêiner é executado, ele imprime uma mensagem informativa e sai.
 
-Docker Engine is installed and running. The `docker` group is created but no users
-are added to it. You need to use `sudo` to run Docker commands.
-Continue to [Linux postinstall](linux-postinstall.md) to allow non-privileged
-users to run Docker commands and for other optional configuration steps.
+O Docker Engine está instalado e em execução. O grupo `docker` é criado, mas nenhum usuário
+é adicionado a ele. Você precisa usar `sudo` para executar comandos do Docker.
+Continue para [Etapas de pós-instalação para Linux] (#etapas-de-pós-instalação-para-linux) para permitir que usuários não privilegiados
+sejam capaz de executar comandos do Docker e para outras etapas de configuração opcionais.
 
-#### Upgrade Docker Engine
+#### Atualizar Docker Engine
 
-To upgrade Docker Engine, first run `sudo apt-get update`, then follow the
-[installation instructions](#install-using-the-repository), choosing the new
-version you want to install.
+Para atualizar o Docker Engine, primeiro execute `sudo apt-get update` e siga o
+[Instruções de Instalação] (#métodos-de-instalação), escolhendo o novo versão que você deseja instalar.
 
-## Uninstall Docker Engine
+## Desinstalar Docker Engine
 
-1.  Uninstall the Docker Engine, CLI, and Containerd packages:
+1.  Desinstale os pacotes Docker Engine, CLI e Containerd:
 
     ```bash
     $ sudo apt-get purge docker-ce docker-ce-cli containerd.io
     ```
 
-2.  Images, containers, volumes, or customized configuration files on your host
-    are not automatically removed. To delete all images, containers, and
-    volumes:
+2.  Imagens, contêineres, volumes ou arquivos de configuração personalizados em seu host não são removidos automaticamente. Para excluir todas as imagens, contêineres e volumes:
 
     ```bash
     $ sudo rm -rf /var/lib/docker
     ```
 
-You must delete any edited configuration files manually.
+Você deve excluir quaisquer arquivos de configuração editados manualmente.
 
-## Next steps
+## Etapas de pós-instalação para Linux
 
 - Continue to [Post-installation steps for Linux](linux-postinstall.md).
-- Review the topics in [Develop with Docker](../../develop/index.md) to learn how to build new applications using Docker.
