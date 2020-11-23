@@ -51,6 +51,9 @@ Você pode instalar o Docker Engine de diferentes maneiras, dependendo de suas n
 Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, você precisa configurar o repositório Docker. Depois disso, você pode instalar e atualizar o Docker do repositório.
 
 #### Configure o repositório
+    ```bash
+    URL_BASE="https://download.docker.com/linux/ubuntu"
+    ```{{execute}}
 
 1.  Atualize o índice do pacote `apt` e instale os pacotes para permitir que o `apt` use um repositório sobre HTTPS:
 
@@ -76,7 +79,9 @@ Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, v
 
     ```bash
     sudo apt-key fingerprint 0EBFCD88
+    ```{{execute}}
 
+    ```bash
     pub   rsa4096 2017-02-22 [SCEA]
           9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
     uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
@@ -121,7 +126,9 @@ Antes de instalar o Docker Engine pela primeira vez em uma nova máquina host, v
 
     ```bash
     apt-cache madison docker-ce
+    ```{{execute}}
 
+    ```bash
       docker-ce | 5:18.09.1~3-0~ubuntu-xenial | {{ download-url-base }}  xenial/stable amd64 Packages
       docker-ce | 5:18.09.0~3-0~ubuntu-xenial | {{ download-url-base }}  xenial/stable amd64 Packages
       docker-ce | 18.06.1~ce~3-0~ubuntu       | {{ download-url-base }}  xenial/stable amd64 Packages
@@ -167,7 +174,3 @@ Para atualizar o Docker Engine, primeiro execute `sudo apt-get update` e siga **
     ```{{execute}}
 
 Você deve excluir quaisquer arquivos de configuração editados manualmente.
-
-## Etapas de pós-instalação para Linux
-
-- Continue to [Post-installation steps for Linux](linux-postinstall.md).
