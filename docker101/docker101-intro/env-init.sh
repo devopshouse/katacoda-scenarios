@@ -1,2 +1,3 @@
 !#/bin/bash
-apt-get update -y && apt-get remove docker docker.io -y
+apt-get update -y 
+apt-get remove docker docker.io -y
