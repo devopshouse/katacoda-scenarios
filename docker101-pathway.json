@@ -1,11 +1,16 @@
 {
-  "title": "Introdução ao Docker",
-  "description": "Introdução ao Docker",
+  "title": "Kubernetes na Prática",
+  "description": "Kubernetes na Prática",
   "courses": [
     {
       "course_id": "docker101-intro",
       "title": "Introdução ao Docker",
       "description": "Introdução ao Docker"
-    }
+    },
+    {
+      "course_id": "k8s101-intro",
+      "title": "Introdução ao Kubernetes",
+      "description": "Introdução ao Kubernetes"
+    }    
   ]
 }

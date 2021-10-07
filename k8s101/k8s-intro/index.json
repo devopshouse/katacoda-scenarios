@@ -1,0 +1,35 @@
+{
+  "title": "Introdução ao Docker",
+  "description": "Introdução ao Docker",
+  "difficulty": "Beginner",
+  "time": "60 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Instalação do Docker no Ubuntu",
+        "text": "step1.md"
+      },
+      {
+        "title": "Instalação Simplificada do Docker",
+        "text": "step2.md"
+      },
+      {
+        "title": "Configurações Pós-Instalação",
+        "text": "step3.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "env-init.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "ubuntu1804"
+  }
+}
